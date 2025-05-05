@@ -1,7 +1,6 @@
 # CRUD Simples Utilizando PHP + MySql + Bootstrap 4
 Cadastro Simples de Usuário Utilizando apenas PHP 
 
-![Screenshot](Print.png)
 
 Instalação
 ------------
@@ -9,14 +8,17 @@ Instalação
 Criar a tabela no Banco de dados:
 
 ```sql
+create database bancoCrud;
+use bancoCrud;
 create table usuario(
     id integer primary key AUTO_INCREMENT,
     nome varchar(200) not null,
-    sobrenome varchar(300) not null,
+    email varchar(300) not null,
     idade integer not null,
-    sexo char(1) not null
+    sexo char(1) not null,
+    plano varchar(10) not null
 )
-```
+
 
 Configurar o arquivo Conexao.php dentro da pasta 'app/conexao': <br>
 
@@ -26,7 +28,7 @@ Lembre-se de alterar os dados(dbname,user,password) na conexão de acordo com se
 -Conexão para MySql
 ```php
  if (!isset(self::$instance)) {
-           self::$instance = new PDO('mysql:host=localhost;dbname=github', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+           self::$instance = new PDO('mysql:host=localhost;dbname=bancoCrud', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
            self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
            self::$instance->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_EMPTY_STRING);
        }
@@ -37,9 +39,9 @@ Lembre-se de alterar os dados(dbname,user,password) na conexão de acordo com se
 
 ```php
         $host = 'localhost;port=5432';
-        $dbname = 'github';
+        $dbname = 'bancoCrud';
         $user = 'root';
-        $pass = '';
+        $pass = 'root';
         try {
       
             if (!isset(self::$instance)) {
