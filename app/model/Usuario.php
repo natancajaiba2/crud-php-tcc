@@ -7,6 +7,8 @@ class Usuario{
     private $email;
     private $idade;
     private $sexo;
+
+    private $plano;
     
     function getId() {
         return $this->id;
@@ -27,7 +29,9 @@ class Usuario{
     function getSexo() {
         return $this->sexo;
     }
-
+    function getPlano(){
+        return $this->plano;
+    }
     function setId($id) {
         $this->id = $id;
     }
@@ -48,6 +52,9 @@ class Usuario{
         $this->sexo = $sexo;
     }
 
+    function setPlano($plano){
+        $this->plano = $plano;
+    }
 
     
 }

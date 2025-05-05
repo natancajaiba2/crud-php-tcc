@@ -7,16 +7,16 @@ class UsuarioDAO{
     public function create(Usuario $usuario) {
         try {
             $sql = "INSERT INTO usuario (                   
-                  nome,email,idade,sexo)
+                  nome,email,idade,sexo,plano)
                   VALUES (
-                  :nome,:email,:idade,:sexo)";
+                  :nome,:email,:idade,:sexo,:plano)";
 
             $p_sql = Conexao::getConexao()->prepare($sql);
             $p_sql->bindValue(":nome", $usuario->getNome());
             $p_sql->bindValue(":email", $usuario->getEmail());
             $p_sql->bindValue(":idade", $usuario->getIdade());
             $p_sql->bindValue(":sexo", $usuario->getSexo());
-            
+            $p_sql->bindValue(":plano", $usuario->getPlano());
             return $p_sql->execute();
         } catch (Exception $e) {
             print "Erro ao Inserir usuario <br>" . $e . '<br>';
@@ -45,7 +45,8 @@ class UsuarioDAO{
                   nome=:nome,
                   email=:email,
                   idade=:idade,
-                  sexo=:sexo                  
+                  sexo=:sexo,   
+                  plano=:plano              
                                                                        
                   WHERE id = :id";
             $p_sql = Conexao::getConexao()->prepare($sql);
@@ -53,6 +54,7 @@ class UsuarioDAO{
             $p_sql->bindValue(":email", $usuario->getEmail());
             $p_sql->bindValue(":idade", $usuario->getIdade());
             $p_sql->bindValue(":sexo", $usuario->getSexo());
+            $p_sql->bindValue(":plano", $usuario->getPlano());
             $p_sql->bindValue(":id", $usuario->getId());
             return $p_sql->execute();
         } catch (Exception $e) {
@@ -81,6 +83,7 @@ class UsuarioDAO{
         $usuario->setEmail($row['email']);
         $usuario->setIdade($row['idade']);
         $usuario->setSexo($row['sexo']);
+        $usuario->setPlano($row['plano']);
 
         return $usuario;
     }

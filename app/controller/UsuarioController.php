@@ -18,6 +18,7 @@ if(isset($_POST['cadastrar'])){
     $usuario->setEmail($d['email']);
     $usuario->setIdade($d['idade']);
     $usuario->setSexo($d['sexo']);
+    $usuario->setPlano($d['plano']);
 
     $usuariodao->create($usuario);
 
@@ -30,6 +31,7 @@ else if(isset($_POST['editar'])){
     $usuario->setEmail($d['email']);
     $usuario->setIdade($d['idade']);
     $usuario->setSexo($d['sexo']);
+    $usuario->setPlano($d['plano']);
     $usuario->setId($d['id']);
 
     $usuariodao->update($usuario);

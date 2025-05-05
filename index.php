@@ -58,6 +58,13 @@ $usuariodao = new UsuarioDAO();
                         <option value="F">Feminino</option>
                     </select>
                 </div>
+                <div class="cool-md-2">
+                    <label>Plano</label>
+                    <select name="plano" class="form-control">
+                        <option value="free">Free</option>
+                        <option value="premium">Premium</option>
+                    </select>
+                </div>
                 <div class="col-md-2">
                     <br>
                     <button class="btn btn-primary" type="submit" name="cadastrar">Cadastrar</button>
@@ -74,6 +81,7 @@ $usuariodao = new UsuarioDAO();
                         <th>Email</th>
                         <th>Idade</th>
                         <th>Sexo</th>
+                        <th>Plano</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -85,6 +93,7 @@ $usuariodao = new UsuarioDAO();
                             <td><?= $usuario->getEmail() ?></td>
                             <td><?= $usuario->getIdade() ?></td>
                             <td><?= $usuario->getSexo()?></td>
+                            <td><?= $usuario->getPlano()?></td>
                             <td class="text-center">
                                 <button class="btn  btn-warning btn-sm" data-toggle="modal" data-target="#editar><?= $usuario->getId() ?>">
                                     Editar
@@ -133,6 +142,19 @@ $usuariodao = new UsuarioDAO();
                                                         <?php endif ?>
 
                                                     </select>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>Plano</label>
+                                                    <select name="plano" class="form-control">
+                                                        <?php if($usuario->getPlano() == 'free'):?>
+                                                            <option value="free">Free</option>
+                                                            <option value="premium">Premium</option>
+                                                        <?php else : ?>
+                                                            <option value="premium">premium</option>
+                                                            <option value="free">free</option>
+                                                        <?php endif ?>
+                                                    </select>
+
                                                 </div>
                                             </div>
                                             <div class="row">
